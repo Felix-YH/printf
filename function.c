@@ -46,3 +46,86 @@ int print_percent(__attribute__((unused))va_list list)
 	_putchar(p);
 	return (1);
 }
+
+**
+ * print_integer - prints integers
+ * @list: list to integers
+ *
+ * Return: integers
+ */
+
+int print_integer(va_list list)
+{
+	int n[10];
+	int f, d, t, y, i;
+
+	t = va_arg(list, int);
+	i = 0;
+	d = 1000000000;
+	n[0] = t / d;
+
+	for (f = 1; f < 10; f++)
+	{
+		d /= 10;
+		n[f] = (t / d) % 10;
+	}
+	if (t < 0)
+	{
+		_putchar('-');
+		i++;
+		for (f = 0; f < 10; f++)
+			n[f] *= -1;
+	}
+	for (f = 0, y = 0; f < 10; f++)
+	{
+		y += n[f];
+		if (y != 0 || f == 9)
+		{
+			_putchar('0' + n[f]);
+			i++;
+		}
+	}
+	return (i);
+}
+
+
+/**
+ * print_decimal - prints decimal
+ * @list: list to decimal
+ *
+ * Return: integers
+ */
+
+int print_decimal(va_list list)
+{
+	int n[10];
+	int f, d, t, y, i;
+
+	t = va_arg(list, int);
+	i = 0;
+	d = 1000000000;
+	n[0] = t / d;
+
+	for (f = 1; f < 10; f++)
+	{
+		d /= 10;
+		n[f] = (t / d) % 10;
+	}
+	if (t < 0)
+	{
+		_putchar('-');
+		i++;
+		for (f = 0; f < 10; f++)
+			n[f] *= -1;
+	}
+	for (f = 0, y = 0; f < 10; f++)
+	{
+		y += n[f];
+		if (y != 0 || f == 9)
+		{
+			_putchar('0' + n[f]);
+			i++;
+		}
+	}
+	return (i);
+}
