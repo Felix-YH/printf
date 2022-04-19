@@ -1,14 +1,13 @@
 #include "main.h"
 
-/**
- * _hex_str - convert a number from base 10 to hex
- * @n: number to be converted
- * @hex: base 16
- * @alpha: char 'A' to 'F' or 'a' to 'f'
- *
- * Return: number of chars print
- */
 
+/**
+ * _hex_str - converts the number from base 10 to hex
+ * @n: number to be converted
+ * @hex: base of 16 being passed
+ * @alpha: Char 'A' to 'F' or 'a' to 'f'
+ * Return: number of chars printed
+ */
 int _hex_str(unsigned int n, unsigned int hex, char alpha)
 {
 	unsigned int a = n % hex;
@@ -19,10 +18,10 @@ int _hex_str(unsigned int n, unsigned int hex, char alpha)
 		c = (a - 10) + alpha;
 	else
 		c = a + '0';
-
 	if (b == 0)
+	{
 		return (_putchar(c));
-
+	}
 	if (b < hex)
 	{
 		if (b > 10)
@@ -30,40 +29,33 @@ int _hex_str(unsigned int n, unsigned int hex, char alpha)
 		return (_putchar(b + '0') + _putchar(c));
 	}
 	return (_hex_str(b, hex, alpha) + _putchar(c));
-
 }
 
 /**
- * _hex_u - print upper hex
+ * _hex_l - printing lower case hexa
  * @list: argument recieved
- *
- * Return: hex printed
+ * Return: no of char printed
+ */
+int _hex_l(va_list list)
+{
+	return (_hex_str(va_arg(list, unsigned int), 16, 'a'));
+}
+
+/**
+ * _hex_u - printing upper case hexa
+ * @list: argument recieved
+ * Return: no. of char printed
  */
 
 int _hex_u(va_list list)
 {
 	return (_hex_str(va_arg(list, unsigned int), 16, 'A'));
-
 }
 
 /**
- * _hex_1- print lower hex
- * @list: argument recieved
- *
- * Return: hex printed
- */
-
-int _hex_1(va_list list)
-{
-	return (_hex_str(va_arg(list, unsigned int), 16, 'a'));
-
-}
-
-/**
- * print_r - print string in reverse
- * @list: list to increment
- *
- * Return: number of characters printed
+ * print_r - prints a string in reverse
+ * @list:list to increment
+ * Return:no. of charcters printed
  */
 
 int print_r(va_list list)
