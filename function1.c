@@ -32,3 +32,29 @@ int _hex_str(unsigned int n, unsigned int hex, char alpha)
 	return (_hex_str(b, hex, alpha) + _putchar(c));
 
 }
+
+/**
+ * _hex_u - print upper hex
+ * @list: argument recieved
+ *
+ * Return: hex printed
+ */
+
+int _hex_u(va_list list)
+{
+	return (_hex_str(va_arg(list, unsigned int), 16, 'A'));
+
+}
+
+/**
+ * _hex_1- print lower hex
+ * @list: argument recieved
+ *
+ * Return: hex printed
+ */
+
+int _hex_1(va_list list)
+{
+	return (_hex_str(va_arg(list, unsigned int), 16, 'a'));
+
+}
