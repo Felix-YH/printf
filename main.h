@@ -1,22 +1,22 @@
 #ifndef PRINTF
 #define PRINTF
 
-/* include default libraries */
+/* import some libraries */
 
-#include <stdio.h>
 #include <stdarg.h>
-#include <string.h>
-#include <stdlib.h>
-#include <limits.h>
+#include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define BUFFSIZE 1024
 
 /**
- * struct convert - definesa struct for symbols and functions
+ * struct convert - defines a struct for sumbols and functions
  *
- * @sym: operator
- * @f: function associated with sum
+ * @sym: The operator
+ * @f: the function associated to symbol
  */
 
 typedef struct convert
@@ -26,16 +26,16 @@ typedef struct convert
 } convert_t;
 
 /**
- * struct modifier - modifier fields collection
- * @flags: flags field composed of [0, '',#,+,-]
+ * struct modifier - mofifier fields collection
+ * @flags: flags field composed of ['0', ' ', '#', '+', '-']
  * @width: width field, positive number
- * @precision: precision field
- * @length: length field string composed [h, l]
- * @specifier: specifier characters
- * [c, s, %, d, i, b, u, o, x, X, S, p, r, R]
+ * @precision: precision field positive number not including '.'
+ * or -1 for '*'
+ * @length: length field string composed of ['h', 'l']
+ * @specifier: specifier character can one of
+ * ['c', 's', '%', 'd', 'i', 'b', 'u', 'o', 'x', 'X', 'S', 'p', 'r', 'R']
  *
  */
-
 typedef struct modifier
 {
 	char *flags;
@@ -45,8 +45,9 @@ typedef struct modifier
 	char specifier;
 } modifier_t;
 
-/* Main function */
-int parser(const char *format, convert_f f_list[], va_list arg_list);
+
+/*Main functions*/
+int parser(const char *format, convert_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_char(va_list);
@@ -59,11 +60,11 @@ int print_octal(va_list list);
 int print_unint(va_list list);
 int print_binary(va_list list);
 int binary_recursive(unsigned int num, int len);
-int _hex_str(unsigned int n, int len);
-int _hex_1(va_list list);
+int _hex_str(unsigned int n, unsigned int hex, char alpha);
+int _hex_l(va_list list);
 int _hex_u(va_list list);
 int str(va_list list);
 int rev_string(__attribute__((unused))va_list list, char *s, ...);
 int print_r(va_list list);
 
-#endif
+#endif /* PRINTF */
