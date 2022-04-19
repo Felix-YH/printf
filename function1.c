@@ -58,3 +58,31 @@ int _hex_1(va_list list)
 	return (_hex_str(va_arg(list, unsigned int), 16, 'a'));
 
 }
+
+/**
+ * print_r - print string in reverse
+ * @list: list to increment
+ *
+ * Return: number of characters printed
+ */
+
+int print_r(va_list list)
+{
+	char *s = va_arg(list, char *);
+	int i, c;
+
+	if (s == NULL)
+		s = ")llun(";
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	i--;
+	for (; i >= 0; i--)
+	{
+		_putchar(s[i]);
+		c++;
+	}
+	return (i);
+}
